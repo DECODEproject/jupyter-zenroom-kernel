@@ -22,7 +22,7 @@ If the zenroom binary (shared or static) is installed system wide and/or is in y
 
     $ jupyter notebook
 
-If the binary is not in your path you have to set an environment variable **ZENROOM_BIN** with the absolute path of the binary 
+If the binary is not in your path you have to set an environment variable `ZENROOM_BIN` with the absolute path of the binary 
 
 ## What is zenroom?
 Zenroom is a brand new, small and portable virtual machine for cryptographic operations and is part of the [DECODE project](https://decodeproject.eu) about data-ownership and [technological sovereignty](https://www.youtube.com/watch?v=RvBRbwBm_nQ).
