@@ -1,11 +1,16 @@
 from setuptools import setup, find_packages
 
+try:
+    import pypandoc
+    description = pypandoc.convert('README.md', 'rst')
+except (IOError, ImportError):
+    description = ''
 
 setup(
     name='jupyter_zenroom_kernel',
     version='0.0.1',
     description='Jupyter kernel for Zenroom. Small, secure and portable virtual machine for crypto language processing',
-    long_description='',
+    long_description=description,
     author='Dyne development team',
     author_email='puria@dyne.org',
     url='https://zenroom.dyne.org/',
