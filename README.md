@@ -1,7 +1,9 @@
-<p align="center"><a href="https://decodeproject.eu" target="_blank" rel="noopener noreferrer"><img width="200" src="https://decodeproject.eu/sites/all/themes/marmelo_base/img/logo.svg" alt="Decode logo"></a></p>
-<p align="center"><a href="https://dyne.org" target="_blank" rel="noopener noreferrer"><img width="200" src="https://secrets.dyne.org/static/img/swbydyne.png" alt="Software by Dyne"></a></p>
 
-# Jupyter zenroom kernel 
+<p align="center"><a href="https://decodeproject.eu" target="_blank" rel="noopener noreferrer"><img valign="top" height="70" src="https://decodeproject.eu/sites/all/themes/marmelo_base/img/logo.svg" alt="Decode logo"></a>
+    &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;
+<a href="https://dyne.org" target="_blank" rel="noopener noreferrer"><img height="70" style="margin-right: 20px" src="https://secrets.dyne.org/static/img/swbydyne.png" alt="Software by Dyne"></a></p>
+
+# Jupyter zenroom kernel
 
 A [Zenroom](http://zenroom.dyne.org) :key: Jupyter [kernel](http://jupyter.readthedocs.io/en/latest/projects/kernels.html) that uses [metakernel](https://github.com/Calysto/metakernel)
 
@@ -35,3 +37,4 @@ You can read more about it on [https://zenroom.dyne.org/]()
  - [x] mark lines on syntax errors
  - [ ] unit testing
  - [ ] better documentation
+ - [ ] code completion
