@@ -13,7 +13,7 @@ setup(
     long_description=description,
     author='Dyne development team',
     author_email='puria@dyne.org',
-    url='https://zenroom.dyne.org/',
+    url='https://github.com/puria/jupyter-zenroom-kernel',
     license='AGPLv3+',
     keywords='',
     platforms='Linux, Mac OS X, Windows',
