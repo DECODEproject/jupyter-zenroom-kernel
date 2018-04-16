@@ -1,7 +1,7 @@
 <p align="center"><a href="https://decodeproject.eu" target="_blank" rel="noopener noreferrer"><img width="200" src="https://decodeproject.eu/sites/all/themes/marmelo_base/img/logo.svg" alt="Decode logo"></a></p>
 <p align="center"><a href="https://dyne.org" target="_blank" rel="noopener noreferrer"><img width="200" src="https://secrets.dyne.org/static/img/swbydyne.png" alt="Software by Dyne"></a></p>
 
-#Jupyter zenroom kernel 
+# Jupyter zenroom kernel 
 
 A [Zenroom](http://zenroom.dyne.org) :key: Jupyter [kernel](http://jupyter.readthedocs.io/en/latest/projects/kernels.html) that uses [metakernel](https://github.com/Calysto/metakernel)
 
