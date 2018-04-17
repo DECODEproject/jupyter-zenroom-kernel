@@ -4,11 +4,12 @@
 <a href="https://dyne.org" target="_blank" rel="noopener noreferrer"><img height="70" style="margin-right: 20px" src="https://secrets.dyne.org/static/img/swbydyne.png" alt="Software by Dyne"></a></p>
 
 # Jupyter zenroom kernel
+![PyPI - License](https://img.shields.io/pypi/l/jupyter_zenroom_kernel.svg)
+![PyPI](https://img.shields.io/pypi/v/jupyter_zenroom_kernel.svg)
 
 A [Zenroom](http://zenroom.dyne.org) :key: Jupyter [kernel](http://jupyter.readthedocs.io/en/latest/projects/kernels.html) that uses [metakernel](https://github.com/Calysto/metakernel)
 
 ## Dependencies
-* Jupyter Notebook
 * Python 3
 * Zenroom
 
@@ -26,6 +27,10 @@ If the zenroom binary (shared or static) is installed system wide and/or is in y
 
 If the binary is not in your path you have to set an environment variable `ZENROOM_BIN` with the absolute path of the binary 
 
+### Step by step installation for :snake: noobs
+
+[![asciicast](https://asciinema.org/a/ROaryUMLUxTpK2YTzxF6sF4OU.png)](https://asciinema.org/a/ROaryUMLUxTpK2YTzxF6sF4OU)
+
 ## What is zenroom?
 Zenroom is a brand new, small and portable virtual machine for cryptographic operations and is part of the [DECODE project](https://decodeproject.eu) about data-ownership and [technological sovereignty](https://www.youtube.com/watch?v=RvBRbwBm_nQ).
 You can read more about it on [https://zenroom.dyne.org/]()
@@ -35,6 +40,6 @@ You can read more about it on [https://zenroom.dyne.org/]()
  - [x] foldable json rendering
  - [x] cell syntax highlighting
  - [x] mark lines on syntax errors
- - [ ] unit testing
+ - [x] unit testing
  - [ ] better documentation
- - [ ] code completion
+ - [x] code completion
