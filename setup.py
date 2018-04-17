@@ -2,9 +2,9 @@ from setuptools import setup, find_packages
 
 setup(
     name='jupyter_zenroom_kernel',
-    version='0.0.1',
+    version='0.0.4',
     description='Jupyter kernel for Zenroom. Small, secure and portable virtual machine for crypto language processing',
-    author='Dyne development team',
+    author='Dyne Development Team',
     author_email='puria@dyne.org',
     long_description=open('README.md').read(),
     long_description_content_type='text/markdown',
