@@ -1,5 +1,11 @@
 from setuptools import setup, find_packages
 
+test_deps = [
+    'coverage',
+    'nose',
+    'jupyter_kernel_test',
+]
+
 setup(
     name='jupyter_zenroom_kernel',
     version='0.0.5',
@@ -23,6 +29,8 @@ setup(
         'notebook>=5.4.1',
         'html2text',
     ],
+    tests_require=test_deps,
+    extras_require={'test': test_deps},
     packages=find_packages(include=['zenroom', 'zenroom.*']),
     package_data={},
     classifiers=[

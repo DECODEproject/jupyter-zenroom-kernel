@@ -21,6 +21,7 @@ class ZenroomKernel(MetaKernel):
         'codemirror_mode': {"name": "text/x-lua"},
         'pygments_lexer': 'lua',
         'file_extension': '.lua',
+        'version': '5.3',
     }
     kernel_json = dict(
         argv=[sys.executable,
@@ -94,7 +95,7 @@ class ZenroomKernel(MetaKernel):
             elif which('zenroom-static'):
                 executable = 'zenroom-static'
             else:
-                msg = ('zenroom executable not found, please add to path or set'
+                msg = ('Zenroom executable not found, please add it to path or set'
                        ' "ZENROOM_BIN" environment variable')
                 raise OSError(msg)
             executable = executable.replace(os.path.sep, '/')
@@ -112,7 +113,7 @@ class ZenroomKernel(MetaKernel):
                 });
                 </script>
             ''' % (_uuid, _uuid, json_output)))
-        except Exception:
+        except:
             return output if output else None
 
     @staticmethod
