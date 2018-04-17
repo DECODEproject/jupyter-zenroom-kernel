@@ -1,6 +1,6 @@
 
 <p align="center"><a href="https://decodeproject.eu" target="_blank" rel="noopener noreferrer"><img valign="top" height="70" src="https://decodeproject.eu/sites/all/themes/marmelo_base/img/logo.svg" alt="Decode logo"></a>
-    &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;  &nbsp; &nbsp;
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <a href="https://dyne.org" target="_blank" rel="noopener noreferrer"><img height="70" style="margin-right: 20px" src="https://secrets.dyne.org/static/img/swbydyne.png" alt="Software by Dyne"></a></p>
 
 # Jupyter zenroom kernel
