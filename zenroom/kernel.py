@@ -4,10 +4,9 @@ import subprocess
 import sys
 
 import uuid
-from IPython.core.display import HTML, JSON
+from IPython.core.display import HTML
 from metakernel import MetaKernel
 from pexpect import which
-
 
 
 class ZenroomKernel(MetaKernel):
@@ -19,7 +18,7 @@ class ZenroomKernel(MetaKernel):
     language_info = {
         'mimetype': 'text/x-lua',
         'name': 'lua',
-        'codemirror_mode': { "name": "text/x-lua" },
+        'codemirror_mode': {"name": "text/x-lua"},
         'pygments_lexer': 'lua',
         'file_extension': '.lua',
     }
@@ -32,6 +31,7 @@ class ZenroomKernel(MetaKernel):
         codemirror_mode='lua',
         name='zenroom'
     )
+    zenroom_modules = ['octet', 'ecdh', 'data', 'math', 'string', 'table']
 
     def get_usage(self):
         return 'This is the Zenroom kernel implementation look at zenroom.dyne.org for more information'
@@ -39,9 +39,12 @@ class ZenroomKernel(MetaKernel):
     def do_execute_direct(self, code, silent=False):
         if silent:
             return
-
         cmd = [self._find_best_executable()]
-        p = subprocess.run(cmd, input=code, capture_output=True, encoding='utf-8')
+        p = subprocess.run(cmd,
+                           input=code,
+                           stdout=subprocess.PIPE,
+                           stderr=subprocess.PIPE,
+                           encoding='utf-8', universal_newlines=True)
         stderr = p.stderr.split('\n')[:-3]
         self.Display(self._clean_errors())
 
@@ -53,8 +56,34 @@ class ZenroomKernel(MetaKernel):
             line = int(error[0].split(":")[1]) - 1
             self.Display(self._highlight_errorline(line))
 
-    def get_help_on(self, expr, level=0, none_on_fail=False, cursor_pos=-1):
-        self.log(expr)
+    def get_kernel_help_on(self, info, level=0, none_on_fail=False):
+        expr = info["full_obj"]
+        self.last_info = info
+        url = None
+        if expr in self.zenroom_modules:
+            url = "https://zenroom.dyne.org/api/modules/%s.html" % expr
+
+        if url:
+            try:
+                import html2text
+                import urllib
+                try:
+                    html = str(urllib.request.urlopen(url).read(), encoding="utf-8")
+                except:
+                    html = str(urllib.urlopen(url).read())
+            except:
+                return url
+            visible_text = html2text.html2text(html)
+            return visible_text
+        elif none_on_fail:
+            return None
+        else:
+            return "Sorry, no available help for '%s'" % expr
+
+    def get_completions(self, info):
+        token = info["full_obj"]
+        self.last_info = info
+        return [command for command in set(self.zenroom_modules) if command.startswith(token)]
 
     @staticmethod
     def _find_best_executable():
@@ -66,7 +95,7 @@ class ZenroomKernel(MetaKernel):
                 executable = 'zenroom-static'
             else:
                 msg = ('zenroom executable not found, please add to path or set'
-                       '"ZENROOM_BIN" environment variable')
+                       ' "ZENROOM_BIN" environment variable')
                 raise OSError(msg)
             executable = executable.replace(os.path.sep, '/')
         return executable
@@ -75,8 +104,6 @@ class ZenroomKernel(MetaKernel):
         _uuid = str(uuid.uuid4())
         try:
             json_output = json.dumps(json.loads(output))
-            self.log.warn(json_output)
-            self.log.warn(_uuid)
             self.Display(HTML('''
                 <div id="%s" style="width:100%%;"></div>
                 <script>
@@ -85,11 +112,11 @@ class ZenroomKernel(MetaKernel):
                 });
                 </script>
             ''' % (_uuid, _uuid, json_output)))
-        except Exception as e:
-            self.log.error(e)
-            return output
+        except Exception:
+            return output if output else None
 
-    def _clean_errors(self):
+    @staticmethod
+    def _clean_errors():
         return HTML("""
             <script>
                 Jupyter.notebook.select_prev();
@@ -101,7 +128,8 @@ class ZenroomKernel(MetaKernel):
             </script>
         """)
 
-    def _highlight_errorline(self, line):
+    @staticmethod
+    def _highlight_errorline(line):
         return HTML("""
             <style type="text/css">.line-error{background-color:#ff7;}</style>
             <script>

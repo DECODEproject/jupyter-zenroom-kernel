@@ -21,6 +21,7 @@ setup(
     install_requires=[
         'metakernel==0.20.14',
         'notebook>=5.4.1',
+        'html2text',
     ],
     packages=find_packages(include=['zenroom', 'zenroom.*']),
     package_data={},
