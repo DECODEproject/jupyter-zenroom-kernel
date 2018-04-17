@@ -1,11 +1,10 @@
 import unittest
-from pprint import pprint
 from unittest import SkipTest
 
 import jupyter_kernel_test
 
 
-class ZenroomKernelTests(jupyter_kernel_test.KernelTests):
+class TestZenroomKernel(jupyter_kernel_test.KernelTests):
     kernel_name = "zenroom"
     language_name = "lua"
     code_hello_world = "print('hello, world')"
@@ -41,9 +40,7 @@ class ZenroomKernelTests(jupyter_kernel_test.KernelTests):
         for sample in self.code_execute_result:
             with self.subTest(code=sample['code']):
                 self.flush_channels()
-
                 reply, output_msgs = self.execute_helper(sample['code'])
-
                 self.assertEqual(reply['content']['status'], 'ok')
                 self.assertEqual(len(output_msgs), 1)
                 self.assertEqual(output_msgs[0]['msg_type'], 'display_data')
@@ -55,12 +52,7 @@ class ZenroomKernelTests(jupyter_kernel_test.KernelTests):
             raise SkipTest
 
         self.flush_channels()
-
         reply, output_msgs = self.execute_helper(self.code_generate_error)
-        pprint(output_msgs)
         self.assertEqual('stderr', output_msgs[1]['content']['name'])
         self.assertGreaterEqual(len(output_msgs), 2)
         self.assertIn("[!]", output_msgs[1]['content']['text'])
-
-if __name__ == '__main__':
-    unittest.main()
