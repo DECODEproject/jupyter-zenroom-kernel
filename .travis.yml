@@ -4,6 +4,17 @@ python:
   - "3.6"
   - "3.7-dev"
 
+addons:
+  apt:
+    packages:
+    - build-essential
+    - gcc
+    - make
+    - valgrind
+    - zsh
+    - musl-tools
+    - mingw-w64
+
 before_install:
   - ./.before_install
   - export ZENROOM_BIN=/home/travis/zenroom_binary/src/zenroom_shared
