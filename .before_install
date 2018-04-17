@@ -1,4 +1,0 @@
-git clone https://github.com/decodeproject/zenroom.git zenroom_binary
-cd zenroom_binary
-git submodule update --init --recursive
-make shared

@@ -16,8 +16,9 @@ addons:
     - mingw-w64
 
 before_install:
-  - ./.before_install
-  - export ZENROOM_BIN=/home/travis/zenroom_binary/src/zenroom_shared
+  - https://files.dyne.org/zenroom/releases/zenroom-0.5.0-x86_64_linux.zip
+  - unzip zenroom-0.5.0-x86_64_linux.zip
+  - export ZENROOM_BIN=/home/travis/zenroom-0.5.0-x86_64_linux
 
 install:
   - pip install -e .
