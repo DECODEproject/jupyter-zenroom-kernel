@@ -8,7 +8,7 @@ test_deps = [
 
 setup(
     name='jupyter_zenroom_kernel',
-    version='0.0.5',
+    version='0.0.6',
     description='Jupyter kernel for Zenroom. Small, secure and portable virtual machine for crypto language processing',
     author='Dyne Development Team',
     author_email='puria@dyne.org',

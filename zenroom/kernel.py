@@ -45,7 +45,7 @@ class ZenroomKernel(MetaKernel):
                            input=code,
                            stdout=subprocess.PIPE,
                            stderr=subprocess.PIPE,
-                           encoding='utf-8', universal_newlines=True)
+                           universal_newlines=True)
         stderr = p.stderr.split('\n')[:-3]
         self.Display(self._clean_errors())
 
