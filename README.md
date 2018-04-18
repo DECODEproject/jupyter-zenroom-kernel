@@ -4,8 +4,8 @@
 <a href="https://dyne.org" target="_blank" rel="noopener noreferrer"><img height="70" style="margin-right: 20px" src="https://secrets.dyne.org/static/img/swbydyne.png" alt="Software by Dyne"></a></p>
 
 # Jupyter zenroom kernel
-![PyPI - License](https://img.shields.io/pypi/l/jupyter_zenroom_kernel.svg)
-![PyPI](https://img.shields.io/pypi/v/jupyter_zenroom_kernel.svg)
+[![PyPI - License](https://img.shields.io/pypi/l/jupyter_zenroom_kernel.svg)](https://github.com/puria/jupyter-zenroom-kernel/blob/master/LICENSE)
+[![PyPI](https://img.shields.io/pypi/v/jupyter_zenroom_kernel.svg)](https://pypi.org/project/jupyter_zenroom_kernel/)
 
 A [Zenroom](http://zenroom.dyne.org) :key: Jupyter [kernel](http://jupyter.readthedocs.io/en/latest/projects/kernels.html) that uses [metakernel](https://github.com/Calysto/metakernel)
 
