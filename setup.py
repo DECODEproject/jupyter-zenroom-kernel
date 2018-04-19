@@ -32,7 +32,7 @@ setup(
     tests_require=test_deps,
     extras_require={'test': test_deps},
     packages=find_packages(include=['zenroom', 'zenroom.*']),
-    package_data={},
+    package_data={'zenroom': 'binaries/*'},
     classifiers=[
         'Framework :: Jupyter',
         'Intended Audience :: Developers',

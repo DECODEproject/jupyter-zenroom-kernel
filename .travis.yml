@@ -4,14 +4,6 @@ python:
   - "3.6"
   - "3.7-dev"
 
-env:
-  global:
-    - ZENROOM_BIN="/home/travis/zenroom-0.5.0-x86_64_linux"
-
-before_install:
-  - wget https://files.dyne.org/zenroom/releases/zenroom-0.5.0-x86_64_linux.zip
-  - unzip zenroom-0.5.0-x86_64_linux.zip
-
 install:
   - pip install -e .
   - pip install -e .[test]

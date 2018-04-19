@@ -1,9 +1,12 @@
 import json
 import os
+import platform
 import subprocess
 import sys
 
 import uuid
+from inspect import getsourcefile
+
 from IPython.core.display import HTML
 from metakernel import MetaKernel
 from pexpect import which
@@ -40,6 +43,7 @@ class ZenroomKernel(MetaKernel):
     def do_execute_direct(self, code, silent=False):
         if silent:
             return
+
         cmd = [self._find_best_executable()]
         p = subprocess.run(cmd,
                            input=code,
@@ -86,20 +90,23 @@ class ZenroomKernel(MetaKernel):
         self.last_info = info
         return [command for command in set(self.zenroom_modules) if command.startswith(token)]
 
-    @staticmethod
-    def _find_best_executable():
-        executable = os.environ.get('ZENROOM_BIN', None)
-        if not executable or not which(executable):
-            if which('zenroom-shared'):
-                executable = 'zenroom-shared'
-            elif which('zenroom-static'):
-                executable = 'zenroom-static'
-            else:
-                msg = ('Zenroom executable not found, please add it to path or set'
-                       ' "ZENROOM_BIN" environment variable')
-                raise OSError(msg)
-            executable = executable.replace(os.path.sep, '/')
-        return executable
+
+    def _find_best_executable(self):
+        cwd = os.path.abspath(getsourcefile(lambda:0))
+        binary_path = os.path.join(cwd, '..', '..', 'binaries')
+        script_dir = os.path.realpath(binary_path)
+        prefix = 'zenroom-0.5.0-'
+
+        _platform = platform.system()
+        if _platform == 'Linux':
+            suffix = 'x86_64_linux'
+        elif _platform == 'Darwin':
+            suffix = 'osx.x86'
+        elif _platform == 'Windows':
+            suffix == 'win64.exe'
+
+        return os.path.join(script_dir, prefix + suffix)
+
 
     def _display_json(self, output):
         _uuid = str(uuid.uuid4())
