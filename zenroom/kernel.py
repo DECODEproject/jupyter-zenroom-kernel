@@ -95,15 +95,15 @@ class ZenroomKernel(MetaKernel):
         cwd = os.path.abspath(getsourcefile(lambda:0))
         binary_path = os.path.join(cwd, '..', '..', 'binaries')
         script_dir = os.path.realpath(binary_path)
-        prefix = 'zenroom-0.5.0-'
+        prefix = 'zenroom.'
 
         _platform = platform.system()
         if _platform == 'Linux':
-            suffix = 'x86_64_linux'
+            suffix = 'x86'
         elif _platform == 'Darwin':
-            suffix = 'osx.x86'
+            suffix = 'command'
         elif _platform == 'Windows':
-            suffix == 'win64.exe'
+            suffix == 'exe'
 
         return os.path.join(script_dir, prefix + suffix)
 
